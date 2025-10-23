@@ -113,3 +113,7 @@ buildNumber.properties
 .classpath
 
 # End of https://www.toptal.com/developers/gitignore/api/maven,java,eclipse
+
+# Rutas específicas para el ordenador de Pablo
+src/main/java/es/um/informatica/
+src/main/resources/es/um/informatica/
