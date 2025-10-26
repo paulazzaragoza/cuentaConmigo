@@ -7,16 +7,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.um.tds.cuentaConmigo.HomeController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.um.tds.cuentaConmigo.HomeController">
    <children>
       <HBox alignment="CENTER" prefHeight="200.0" prefWidth="1920.0" spacing="300.0" style="-fx-background-color: #245;">
          <children>
-            <Label text="Home " textFill="WHITE">
+            <Label text="Home " textFill="#ffeeee">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <Button fx:id="primaryButton" onAction="#switchToEstadisticas" text="Estadísticas ">
+            <Button fx:id="primaryButton" onAction="#switchToEstadisticas" style="-fx-background-color: #fee;" text="Estadísticas " textFill="#224455">
                <font>
                   <Font size="24.0" />
                </font>
@@ -24,7 +24,7 @@
                   <Insets bottom="20.0" top="20.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="secondaryButton" onAction="#switchToCuentasCompartidas" text="Cuentas Compartidas">
+            <Button fx:id="secondaryButton" onAction="#switchToCuentasCompartidas" style="-fx-background-color: #fee;" text="Cuentas Compartidas" textFill="#224455">
                <font>
                   <Font size="24.0" />
                </font>
@@ -34,6 +34,11 @@
             </Button>
          </children>
       </HBox>
-      <HBox prefHeight="880.0" prefWidth="1920.0" />
+      <HBox prefHeight="880.0" prefWidth="1920.0" style="-fx-background-color: #cde;">
+         <children>
+            <VBox prefHeight="880.0" prefWidth="640.0" style="-fx-background-color: #cde; -fx-border-color: transparent #245 transparent transparent; -fx-border-width: 0 10 0 0;" />
+            <VBox layoutX="10.0" layoutY="10.0" prefHeight="880.0" prefWidth="640.0" style="-fx-background-color: #cde; -fx-border-color: transparent #245 transparent transparent; -fx-border-width: 0 0 0 0;" />
+            <VBox layoutX="650.0" layoutY="10.0" prefHeight="880.0" prefWidth="640.0" style="-fx-background-color: #cde; -fx-border-color: transparent transparent transparent #245; -fx-border-width: 0 0 0 10;" />
+         </children></HBox>
    </children>
 </VBox>
