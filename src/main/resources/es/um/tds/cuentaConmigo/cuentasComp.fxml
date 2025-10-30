@@ -5,12 +5,13 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <BorderPane prefHeight="630.0" prefWidth="1120.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.um.tds.cuentaConmigo.CuentasCompController">
    <top>
-      <FlowPane alignment="CENTER" columnHalignment="CENTER" prefWrapLength="1000.0" BorderPane.alignment="CENTER">
+      <FlowPane alignment="TOP_CENTER" columnHalignment="CENTER" prefHeight="100.0" prefWidth="1120.0" prefWrapLength="1000.0" BorderPane.alignment="CENTER">
          <children>
             <Button mnemonicParsing="false" onAction="#switchToHome" prefHeight="55.0" prefWidth="300.0" text="Home">
                <FlowPane.margin>
@@ -32,13 +33,24 @@
       </FlowPane>
    </top>
    <center>
-      <HBox alignment="CENTER" prefHeight="520.0" prefWidth="1120.0" BorderPane.alignment="CENTER">
+      <HBox prefHeight="520.0" prefWidth="1120.0" BorderPane.alignment="CENTER">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cuentas Compartidas">
-               <font>
-                  <Font size="30.0" />
-               </font>
-            </Text>
+            <VBox alignment="TOP_CENTER" prefHeight="555.0" prefWidth="527.0">
+               <children>
+                  <FlowPane alignment="TOP_CENTER" prefHeight="317.0" prefWidth="527.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nueva cuenta compartida">
+                           <FlowPane.margin>
+                              <Insets top="20.0" />
+                           </FlowPane.margin>
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </FlowPane>
+               </children>
+            </VBox>
          </children>
       </HBox>
    </center>

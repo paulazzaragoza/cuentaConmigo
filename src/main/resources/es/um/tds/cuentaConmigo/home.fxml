@@ -10,7 +10,7 @@
 
 <BorderPane prefHeight="630.0" prefWidth="1120.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.um.tds.cuentaConmigo.HomeController">
    <top>
-      <FlowPane alignment="CENTER" columnHalignment="CENTER" prefWrapLength="1000.0" BorderPane.alignment="CENTER">
+      <FlowPane alignment="TOP_CENTER" columnHalignment="CENTER" prefHeight="100.0" prefWidth="1120.0" prefWrapLength="1000.0" BorderPane.alignment="CENTER">
          <children>
             <Button mnemonicParsing="false" prefHeight="55.0" prefWidth="300.0" text="Home">
                <FlowPane.margin>
