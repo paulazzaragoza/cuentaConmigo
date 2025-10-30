@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import javafx.fxml.FXML;
 
-public class cuentasCompController {
+public class CuentasCompController {
 
 	@FXML
     private void switchToHome() throws IOException {
