@@ -9,6 +9,8 @@
 
 .navButton:hover{
 	-fx-border-color: #fee;
+	-fx-font-size: 18px;
+	-fx-opacity: 1;
 }
 
 .leftPane, .centerPane, .rightPane{
@@ -35,12 +37,21 @@
 	-fx-font-weight: bold;
 }
 
-.button{
+.subtitle{
+	-fx-text-fill: #245;
+}
+
+.CommonButton{
 	-fx-background-color: #245;
 	-fx-text-fill: #fee;
 	-fx-font-weight: bold;
 }
 
-.button:hover{
+.CommonButton:hover{
 	-fx-opacity: 0.7;
+	-fx-font-size: 24px;
+}
+
+.Input{
+	-fx-background-color: #fee;
 }
