@@ -163,7 +163,7 @@
                               <Font size="24" />
                            </font>
                         </Label>
-                              <TextArea prefRowCount="4" promptText="Descripción del gasto" styleClass="Input" wrapText="true">
+                              <TextArea prefRowCount="4" promptText="Descripción del gasto" style="-fx-background-color: #fee;" styleClass="Input" wrapText="true">
                            <VBox.margin>
                               <Insets left="40.0" right="40.0" />
                            </VBox.margin></TextArea>
