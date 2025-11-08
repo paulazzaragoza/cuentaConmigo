@@ -55,3 +55,37 @@
 .Input{
 	-fx-background-color: #fee;
 }
+
+.choice-box{
+	-fx-background-color: #245;
+	-fx-text-fill: #fee;
+}
+
+.choice-box .arrow-button {
+    -fx-border-color: #cde;
+}
+
+.choice-box .arrow-button .arrow {
+    -fx-background-color: #cde;  
+}
+
+.text-area {
+    -fx-control-inner-background: #fee;   
+	-fx-text-fill: #245;
+}
+
+.date-picker .text-field {
+    -fx-control-inner-background: #fee;  
+    -fx-text-fill: #245;                     
+}
+
+.date-picker-popup {
+    -fx-background-color: #fee;
+    -fx-border-color: #245;
+}
+
+.date-picker .arrow-button {
+    -fx-background-color: #245;
+}
+
+
