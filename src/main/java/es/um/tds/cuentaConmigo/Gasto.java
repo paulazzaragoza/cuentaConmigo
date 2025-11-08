@@ -5,7 +5,7 @@ import java.time.LocalDate;
 public class Gasto {
 	
 	//propiedades
-	private final int identificador;
+	private final int id;
 	private static int contador = 0;
 	private String descripcion;
 	private double cantidad;
@@ -14,7 +14,7 @@ public class Gasto {
 	
 	//constructor
 	public Gasto(String descripcion, Categoria categoria, double cantidad) {
-		this.identificador = contador++;
+		this.id = contador++;
 		this.descripcion = descripcion;
 		this.categoria = categoria;
 		this.cantidad = cantidad;
@@ -32,6 +32,10 @@ public class Gasto {
 
 	public double getCantidad() {
 		return cantidad;
+	}
+	
+	public int getId() {
+		return this.id;
 	}
 
 	public void setCantidad(double cantidad) {
