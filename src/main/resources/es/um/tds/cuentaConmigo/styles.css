@@ -61,6 +61,10 @@
 	-fx-text-fill: #fee;
 }
 
+.choice-box > .label{
+	-fx-text-fill: #fee;
+}
+
 .choice-box .arrow-button {
     -fx-border-color: #cde;
 }
@@ -86,6 +90,46 @@
 
 .date-picker .arrow-button {
     -fx-background-color: #245;
+}
+
+
+.scroll-pane {
+    -fx-background-color: #fee;
+    -fx-border-color: #245;
+    -fx-border-width: 1px;
+}
+
+
+.scroll-pane .viewport {
+    -fx-background-color: #fee;
+}
+
+
+.checkbox{
+    -fx-font-size: 14px;
+    -fx-text-fill: #245;
+}
+
+.checkbox .box {
+    -fx-background-color: #fee;
+    -fx-border-color: #245;
+    -fx-border-width: 1px;
+}
+
+.scroll-pane .scroll-bar {
+    -fx-background-color: transparent; 
+    -fx-pref-width: 12px;             
+    -fx-pref-height: 12px;            
+}
+
+
+.scroll-pane .scroll-bar .track {
+    -fx-background-color: #245; /* color de fondo */
+    -fx-background-insets: 0;
+}
+
+.errorTexto{
+	-fx-text-fill: #a21;
 }
 
 
