@@ -5,13 +5,13 @@ import java.util.List;
 
 public class RepositorioLimites {
 	
-private List<Limite> limites = new LinkedList<>();
+private static List<Limite> limites = new LinkedList<>();
 	
-	public void guardarLimite(Limite limite) {
+	public static void guardarLimite(Limite limite) {
         limites.add(limite);
     }
 	
-	public List<Limite> getLimites() {
+	public static List<Limite> getLimites() {
         return new LinkedList<>(limites);
     }
 

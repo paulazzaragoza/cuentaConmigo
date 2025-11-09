@@ -2,7 +2,7 @@ package es.um.tds.cuentaConmigo;
 
 public class FactoriaLimites {
 
-	public Limite crearLimite(double cantidad, TipoLimite tipo, Categoria categoria) {
+	public static Limite crearLimite(double cantidad, TipoLimite tipo, Categoria categoria) {
 		if(categoria == null) {
 			return new Limite(cantidad, tipo);
 		}

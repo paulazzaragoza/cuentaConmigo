@@ -61,6 +61,10 @@
 	-fx-text-fill: #fee;
 }
 
+.choice-box > .label{
+	-fx-text-fill: #fee;
+}
+
 .choice-box .arrow-button {
     -fx-border-color: #cde;
 }
@@ -122,6 +126,10 @@
 .scroll-pane .scroll-bar .track {
     -fx-background-color: #245; /* color de fondo */
     -fx-background-insets: 0;
+}
+
+.errorTexto{
+	-fx-text-fill: #a21;
 }
 
 
