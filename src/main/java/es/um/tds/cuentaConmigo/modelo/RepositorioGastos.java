@@ -1,4 +1,4 @@
-package es.um.tds.cuentaConmigo;
+package es.um.tds.cuentaConmigo.modelo;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -34,7 +34,7 @@ public class RepositorioGastos {
     
     public static List<Gasto> filtrarGastosMeses(List<String> meses){
     	return gastos.stream()
-                .filter(g -> meses.contains(g.getFecha().getMonth().toString().toLowerCase()))
+                .filter(g -> meses.contains(g.getFecha().getMonth().toString()))
                 .collect(Collectors.toList());
     }
     

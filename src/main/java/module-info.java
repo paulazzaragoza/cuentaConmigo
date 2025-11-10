@@ -3,6 +3,8 @@ module es.um.tds.cuentaConmigo {
     requires javafx.fxml;
 	requires javafx.graphics;
 
-    opens es.um.tds.cuentaConmigo to javafx.fxml;
-    exports es.um.tds.cuentaConmigo;
+    opens es.um.tds to javafx.fxml;
+    opens es.um.tds.cuentaConmigo.vista;
+    exports es.um.tds;
+    exports es.um.tds.cuentaConmigo.vista;
 }

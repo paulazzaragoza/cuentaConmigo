@@ -1,7 +1,8 @@
-package es.um.tds.cuentaConmigo;
+package es.um.tds.cuentaConmigo.vista;
 
 import java.io.IOException;
 
+import es.um.tds.cuentaConmigo.modelo.Gasto;
 import javafx.fxml.*;
 import javafx.scene.control.*;
 

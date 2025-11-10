@@ -1,9 +1,12 @@
-package es.um.tds.cuentaConmigo;
+package es.um.tds.cuentaConmigo.vista;
 
 import java.io.IOException;
+import es.um.tds.App;
 import java.util.LinkedList;
 import java.util.List;
 
+import es.um.tds.cuentaConmigo.controlador.ControladorDeModelo;
+import es.um.tds.cuentaConmigo.modelo.Gasto;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
@@ -181,7 +184,11 @@ public class HomeController {
     	    if (n instanceof CheckBox) {
     	        CheckBox cb = (CheckBox) n;
     	        if (cb.isSelected()) {
-    	            listaCategorias.add(cb.getText());
+    	        	
+    	        	listaCategorias.add(cb.getText());
+    	        	
+    	            
+    	            //System.out.println("Se ha obtenido la lista de tamaño " + listaCategorias.size());
     	        }
     	    }
     	}
@@ -190,7 +197,34 @@ public class HomeController {
     	    if (n instanceof CheckBox) {
     	        CheckBox cb = (CheckBox) n;
     	        if (cb.isSelected()) {
-    	            listaMeses.add(cb.getText());
+    	        	 switch (cb.getText()) {
+	    	            case "Enero": listaMeses.add("January");
+	    	            break;
+	    	            case "Febrero": listaMeses.add("February");
+	    	            break;
+	    	            case "Marzo" : listaMeses.add("March");
+	    	            break;
+	    	            case "Abril" : listaMeses.add("April");
+	    	            break;
+	    	            case "Mayo" : listaMeses.add("May");
+	    	            break;
+	    	            case "Junio" : listaMeses.add("June");
+	    	            break;
+	    	            case "Julio" : listaMeses.add("July");
+	    	            break;
+	    	            case "Agosto" : listaMeses.add("August");
+	    	            break;
+	    	            case "Septiembre" : listaMeses.add("September");
+	    	            break;
+	    	            case "Octubre" : listaMeses.add("October");
+	    	            break;
+	    	            case "Noviembre" : listaMeses.add("November");
+	    	            break;
+	    	            case "Diciembre" : listaMeses.add("December");
+	    	            break; // o puedes lanzar excepción
+	    	        };
+    	            
+    	            //System.out.println("Se ha obtenido la lista de tamaño " + listaMeses.size());
     	        }
     	    }
     	}
@@ -204,6 +238,41 @@ public class HomeController {
     	}
     	
     }
+    
+    @FXML
+    private Button categoriaNuevaBtn;
+    
+    @FXML
+    private TextField categoriaNuevaText;
+    
+    @FXML
+    private Label errorNuevaCategoria;
+    
+    public void crearNuevaCategoria() {
+    	errorNuevaCategoria.setText("");
+    	
+    	String categoriaTexto = categoriaNuevaText.getText();
+    	if(categoriaTexto.isEmpty()) {
+    		errorNuevaCategoria.setText("Rellena el campo nueva categoría");
+    		return;
+    	}
+    	
+    	controlador.addNuevaCategoria(categoriaTexto);
+    	
+    	cbCategoria1.getItems().add(categoriaTexto);
+    	cbCategoria2.getItems().add(categoriaTexto);
+    	
+    	CheckBox nuevoCheckBox = new CheckBox(categoriaTexto);
+    	nuevoCheckBox.getStyleClass().add("checkbox");
+    	
+        VBoxCategorias.getChildren().add(nuevoCheckBox);
+
+        categoriaNuevaText.clear();
+    	
+    }
+    
+    
+    
     
     
 }

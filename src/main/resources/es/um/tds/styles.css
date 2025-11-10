@@ -132,4 +132,12 @@
 	-fx-text-fill: #a21;
 }
 
+#categoriaNuevaBtn:hover{
+	-fx-font-size: 18px;
+}
+
+#categoriaNuevaBtn{
+	-fx-font-size: 18px;
+}
+
 
