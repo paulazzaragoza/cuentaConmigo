@@ -159,7 +159,25 @@
                                  <Font size="24" />
                               </font>
                            </Label>
-                           <ChoiceBox fx:id="cbCategoria1" prefWidth="150.0" styleClass="michoice" />
+                           <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                              <children>
+                                 <ChoiceBox fx:id="cbCategoria1" prefWidth="150.0" styleClass="michoice" />
+                                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                    <children>
+                                       <TextField fx:id="categoriaNuevaText" promptText="Crear nueva" styleClass="Input">
+                                          <font>
+                                             <Font size="18.0" />
+                                          </font>
+                                       </TextField>
+                                       <Button fx:id="categoriaNuevaBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" styleClass="CommonButton" text="+">
+                                          <font>
+                                             <Font size="18.0" />
+                                          </font>
+                                       </Button>
+                                    </children>
+                                 </HBox>
+                              </children>
+                           </HBox>
                               </VBox>
                           </HBox>
       
