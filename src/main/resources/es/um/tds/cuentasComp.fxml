@@ -51,7 +51,7 @@
                         <Insets />
                      </HBox.margin>
                   </TextField>
-                  <TextField prefHeight="26.0" prefWidth="45.0" promptText="%%" styleClass="Input">
+                  <TextField prefHeight="26.0" prefWidth="45.0" promptText="|%" styleClass="Input">
                   	 <font>
                         <Font size="18.0" />
                      </font>
