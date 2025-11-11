@@ -40,7 +40,7 @@ public class RepositorioGastos {
     
     public static List<Gasto> filtrarGastosMesesCategorias(List<String> meses, List<Categoria> categorias){
     	return gastos.stream()
-                .filter(g -> meses.contains(g.getFecha().getMonth().toString().toLowerCase()) && categorias.contains(g.getCategoria()))
+                .filter(g -> meses.contains(g.getFecha().getMonth().toString()) && categorias.contains(g.getCategoria()))
                 .collect(Collectors.toList());
     }
     

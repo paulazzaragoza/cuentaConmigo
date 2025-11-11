@@ -198,29 +198,29 @@ public class HomeController {
     	        CheckBox cb = (CheckBox) n;
     	        if (cb.isSelected()) {
     	        	 switch (cb.getText()) {
-	    	            case "Enero": listaMeses.add("January");
+	    	            case "Enero": listaMeses.add("JANUARY");
 	    	            break;
-	    	            case "Febrero": listaMeses.add("February");
+	    	            case "Febrero": listaMeses.add("FEBRUARY");
 	    	            break;
-	    	            case "Marzo" : listaMeses.add("March");
+	    	            case "Marzo" : listaMeses.add("MARCH");
 	    	            break;
-	    	            case "Abril" : listaMeses.add("April");
+	    	            case "Abril" : listaMeses.add("APRIL");
 	    	            break;
-	    	            case "Mayo" : listaMeses.add("May");
+	    	            case "Mayo" : listaMeses.add("MAY");
 	    	            break;
-	    	            case "Junio" : listaMeses.add("June");
+	    	            case "Junio" : listaMeses.add("JUNE");
 	    	            break;
-	    	            case "Julio" : listaMeses.add("July");
+	    	            case "Julio" : listaMeses.add("JULY");
 	    	            break;
-	    	            case "Agosto" : listaMeses.add("August");
+	    	            case "Agosto" : listaMeses.add("AUGUST");
 	    	            break;
-	    	            case "Septiembre" : listaMeses.add("September");
+	    	            case "Septiembre" : listaMeses.add("SEPTEMBER");
 	    	            break;
-	    	            case "Octubre" : listaMeses.add("October");
+	    	            case "Octubre" : listaMeses.add("OCTOBER");
 	    	            break;
-	    	            case "Noviembre" : listaMeses.add("November");
+	    	            case "Noviembre" : listaMeses.add("NOVEMBER");
 	    	            break;
-	    	            case "Diciembre" : listaMeses.add("December");
+	    	            case "Diciembre" : listaMeses.add("DECEMBER");
 	    	            break; // o puedes lanzar excepción
 	    	        };
     	            

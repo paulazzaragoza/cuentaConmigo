@@ -20,4 +20,12 @@ public class Categoria {
 		return tipo;
 	}
 	
+	@Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Categoria)) return false;
+        Categoria c = (Categoria) o;
+        return tipo.equalsIgnoreCase(c.tipo);
+    }
+	
 }
