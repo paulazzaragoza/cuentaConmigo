@@ -1,10 +1,20 @@
-package es.um.tds.cuentaConmigo;
+package es.um.tds.cuentaConmigo.controlador;
 
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import es.um.tds.cuentaConmigo.modelo.Categoria;
+import es.um.tds.cuentaConmigo.modelo.FactoriaCategorias;
+import es.um.tds.cuentaConmigo.modelo.FactoriaGastos;
+import es.um.tds.cuentaConmigo.modelo.FactoriaLimites;
+import es.um.tds.cuentaConmigo.modelo.Gasto;
+import es.um.tds.cuentaConmigo.modelo.Limite;
+import es.um.tds.cuentaConmigo.modelo.RepositorioCategorias;
+import es.um.tds.cuentaConmigo.modelo.RepositorioGastos;
+import es.um.tds.cuentaConmigo.modelo.RepositorioLimites;
+import es.um.tds.cuentaConmigo.modelo.TipoLimite;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 
@@ -26,6 +36,10 @@ public class ControladorDeModelo {
 	//Método para borrar gasto
 	
 	//Método para crear nuevas categorias
+	public void addNuevaCategoria(String nombreCategoria) {
+		Categoria categoria = FactoriaCategorias.crearCategoria(nombreCategoria);
+		RepositorioCategorias.guardarCategoria(categoria);
+	}
 	
 	//Filtrar 
 	public List<Gasto> filtrarGastos(List<String> listaCategorias, List<String> listaMeses) {

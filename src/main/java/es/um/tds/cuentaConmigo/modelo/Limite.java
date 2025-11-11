@@ -1,4 +1,4 @@
-package es.um.tds.cuentaConmigo;
+package es.um.tds.cuentaConmigo.modelo;
 
 public class Limite {
 

@@ -63,6 +63,7 @@
 
 .choice-box > .label{
 	-fx-text-fill: #fee;
+	-fx-font-size: 14px;
 }
 
 .choice-box .arrow-button {
@@ -130,6 +131,44 @@
 
 .errorTexto{
 	-fx-text-fill: #a21;
+}
+
+#categoriaNuevaBtn:hover{
+	-fx-font-size: 18px;
+}
+
+#categoriaNuevaBtn{
+	-fx-font-size: 18px;
+}
+
+#filtrarBtn:hover{
+	-fx-font-size: 24px;
+}
+
+.resultadosPanel{
+	-fx-background-color: #cde;
+	-fx-border-color: #245;
+}
+
+.resultadoGasto{
+	-fx-border-color: #245;
+	-fx-background-color: #fee;
+}
+
+.resultadoGasto .label{
+	-fx-text-fill: #245;
+	-fx-font-weight: bold;
+}
+
+.editBtn{
+	-fx-background-color: #245;
+	-fx-font-weight: bold;
+	-fx-text-fill: #fee;
+}
+
+.editBtn:hover{
+	-fx-opacity: 0.7;
+	-fx-font-size: 14px;
 }
 
 
