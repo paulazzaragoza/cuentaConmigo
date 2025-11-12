@@ -7,6 +7,7 @@ import java.util.*;
 import es.um.tds.App;
 import es.um.tds.cuentaConmigo.controlador.ControladorDeModelo;
 import es.um.tds.cuentaConmigo.modelo.Gasto;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -47,14 +48,20 @@ public class EstadisticasController {
         App.setRoot("cuentasComp");
     }
     
+    @FXML
     public void initialize() {
     	inicializarTabla();
     }
     
     public void inicializarTabla() {
     	
-    	colId.setCellValueFactory(new PropertyValueFactory<>("id"));
-    	colDesc.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
+    	colId.setCellValueFactory(cellData ->
+        new SimpleObjectProperty<>(cellData.getValue().getId())
+    							);
+    	
+    	colDesc.setCellValueFactory(cellData ->
+        new SimpleStringProperty(cellData.getValue().getDescripcion())
+    								);
     	
     	colCat.setCellValueFactory(cellData ->
         new SimpleStringProperty(cellData.getValue().getCategoria().getTipo())
@@ -64,8 +71,9 @@ public class EstadisticasController {
         new SimpleStringProperty(cellData.getValue().getFecha().toString())
     								);
     	
-    	colCant.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
-    	
+    	colCant.setCellValueFactory(cellData ->
+        new SimpleObjectProperty<>(cellData.getValue().getCantidad())
+    								);
 
     	List<Gasto> gastos = controlador.getGastos();
 
