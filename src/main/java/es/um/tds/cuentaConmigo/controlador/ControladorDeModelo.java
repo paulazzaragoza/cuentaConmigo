@@ -29,6 +29,7 @@ public class ControladorDeModelo {
 		Categoria categoria = FactoriaCategorias.crearCategoria(nombreCategoria);
 		Gasto gasto = FactoriaGastos.crearGasto(descripcion, categoria, cantidad);
 		RepositorioGastos.guardarGasto(gasto);
+		
 	}
 	
 	//Método para editar gasto
@@ -81,8 +82,18 @@ public class ControladorDeModelo {
 	}
 	
 	
+	
+	
 	//Notificar de un limite
 		//y añadirlo al historial
+	
+	
+	//Conseguir todos los gastos
+	
+	public List<Gasto> getGastos(){
+		return RepositorioGastos.getGastos();
+	}
+	
 	
 	//Creacion de cuenta compartida
 	
