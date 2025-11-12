@@ -13,7 +13,11 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.PieChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
@@ -42,6 +46,14 @@ public class EstadisticasController {
 	@FXML 
 	private PieChart pieGastos;
 	
+	@FXML
+	private BarChart<String, Number> graficoGastos;
+	
+	@FXML
+	private CategoryAxis ejeX;
+	
+	@FXML
+	private NumberAxis ejeY;
 	
     @FXML
     private void switchToHome() throws IOException {
@@ -57,6 +69,7 @@ public class EstadisticasController {
     public void initialize() {
     	inicializarTabla();
     	inicializarPie();
+    	inicializarGrafico();
     }
     
     public void inicializarTabla() {
@@ -135,5 +148,34 @@ public class EstadisticasController {
 //    	}
 
     	
+    }
+    
+    public void inicializarGrafico() {
+    	
+    	List<Gasto> gastos = controlador.getGastos();
+    	
+    	Map<String, Double> sumaPorCategoria = new HashMap<>();
+    	
+    	for(Gasto g : gastos) {
+    		String tipo = g.getCategoria().getTipo();
+    		sumaPorCategoria.put(tipo, sumaPorCategoria.getOrDefault(tipo, 0.0)+g.getCantidad());
+    	}
+    	
+    	XYChart.Series<String, Number> serie = new XYChart.Series<>();
+        serie.setName("Gastos por categoría");
+        
+        for (Map.Entry<String, Double> entrada : sumaPorCategoria.entrySet()) {
+            serie.getData().add(new XYChart.Data<>(entrada.getKey(), entrada.getValue()));
+        }
+        
+        graficoGastos.getData().clear();
+        graficoGastos.getData().add(serie);
+        
+        ejeX.setCategories(FXCollections.observableArrayList(sumaPorCategoria.keySet()));
+        
+        double maxBarScale = 0.2; // 20% del ancho disponible
+
+     // Recorrer todas las barras y aplicar la escala horizontal
+     graficoGastos.lookupAll(".chart-bar").forEach(barra -> barra.setScaleX(maxBarScale));
     }
 }

@@ -85,10 +85,10 @@
          <children>
             <BarChart fx:id="graficoGastos" GridPane.columnSpan="2">
               <xAxis>
-                <CategoryAxis side="BOTTOM" />
+                <CategoryAxis fx:id="ejeX" label="Categoría" side="BOTTOM" />
               </xAxis>
               <yAxis>
-                <NumberAxis side="LEFT" />
+                <NumberAxis fx:id="ejeY" label= "Cantidad(€)" side="LEFT" />
               </yAxis>
             </BarChart>
             <Separator prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowSpan="2" />
