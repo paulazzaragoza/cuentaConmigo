@@ -7,11 +7,13 @@ import java.util.*;
 import es.um.tds.App;
 import es.um.tds.cuentaConmigo.controlador.ControladorDeModelo;
 import es.um.tds.cuentaConmigo.modelo.Gasto;
+import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
@@ -37,6 +39,9 @@ public class EstadisticasController {
 	@FXML
 	private TableColumn<Gasto, Double> colCant;
 	
+	@FXML 
+	private PieChart pieGastos;
+	
 	
     @FXML
     private void switchToHome() throws IOException {
@@ -51,6 +56,7 @@ public class EstadisticasController {
     @FXML
     public void initialize() {
     	inicializarTabla();
+    	inicializarPie();
     }
     
     public void inicializarTabla() {
@@ -80,5 +86,54 @@ public class EstadisticasController {
     	ObservableList<Gasto> gastosObservables = FXCollections.observableArrayList(gastos);
     	
     	tablaGastos.setItems(gastosObservables);
+    }
+    
+    public void inicializarPie(){
+    	List<Gasto> gastos = controlador.getGastos();
+    	
+    	Map<String, Double> sumaPorCategoria = new HashMap<>();
+    	
+    	for(Gasto g : gastos) {
+    		String tipo = g.getCategoria().getTipo();
+    		sumaPorCategoria.put(tipo, sumaPorCategoria.getOrDefault(tipo, 0.0)+g.getCantidad());
+    	}
+    	
+    	ObservableList<PieChart.Data> datosPie = FXCollections.observableArrayList();
+    	
+    	for (Map.Entry<String, Double> entrada : sumaPorCategoria.entrySet()) {
+    	    datosPie.add(new PieChart.Data(entrada.getKey(), entrada.getValue()));
+    	}
+    	
+    	pieGastos.setData(datosPie);
+    	
+    	
+    	//Mostrar valores absolutos
+//    	pieGastos.getData().forEach(data ->
+//        data.nameProperty().bind(
+//            Bindings.concat(
+//                data.getName(), " (", String.format("%.1f", data.getPieValue()), "€)"
+//            		)
+//        		)
+//    	);
+    	
+    	
+    	
+    	//Mostrar porcentajes
+//    	for (PieChart.Data data : pieGastos.getData()) {
+//    	    // Calcular el porcentaje sobre el total
+//    	    double total = datosPie.stream()
+//    	            .mapToDouble(PieChart.Data::getPieValue)
+//    	            .sum();
+//    	    double porcentaje = (data.getPieValue() / total) * 100;
+//
+//    	    // Crear etiqueta personalizada
+//    	    data.nameProperty().bind(
+//    	        Bindings.concat(
+//    	            data.getName(), " (", String.format("%.1f%%", porcentaje), ")"
+//    	        )
+//    	    );
+//    	}
+
+    	
     }
 }

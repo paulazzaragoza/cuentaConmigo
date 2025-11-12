@@ -83,7 +83,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
         </rowConstraints>
          <children>
-            <BarChart GridPane.columnSpan="2">
+            <BarChart fx:id="graficoGastos" GridPane.columnSpan="2">
               <xAxis>
                 <CategoryAxis side="BOTTOM" />
               </xAxis>
@@ -102,6 +102,7 @@
                   <Insets left="60.0" />
                </padding>
             </Label>
+            <PieChart fx:id="pieGastos" GridPane.rowIndex="1" />
          </children>
       </GridPane>
    </center>
