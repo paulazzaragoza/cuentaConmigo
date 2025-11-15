@@ -268,6 +268,9 @@ public class HomeController {
             return "invalido";
         }
     }
+    
+    @FXML
+    private Label numResultados;
 
 
     
@@ -275,6 +278,7 @@ public class HomeController {
     public void filtrarGastos() {
     	
     	errorFiltrar.setText("");
+    	numResultados.setText("");
     	
     	List<String> listaCategorias = new LinkedList<>();
     	List<String> listaMeses = new LinkedList<>();
@@ -378,6 +382,8 @@ public class HomeController {
     	    gastosFiltrados = controlador.filtrarGastosIntervalo(listaCategorias, 
     	            filtroFecha1.getValue(), filtroFecha2.getValue());
     	}
+    	
+    	numResultados.setText(gastosFiltrados.size() + " resultados");
 
 		mostrarResultados(gastosFiltrados);
     	
