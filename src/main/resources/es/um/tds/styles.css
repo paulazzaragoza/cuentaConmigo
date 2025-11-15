@@ -164,6 +164,7 @@
 	-fx-background-color: #245;
 	-fx-font-weight: bold;
 	-fx-text-fill: #fee;
+	-fx-font-size: 14px;
 }
 
 .editBtn:hover{

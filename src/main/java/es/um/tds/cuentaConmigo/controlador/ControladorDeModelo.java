@@ -36,6 +36,9 @@ public class ControladorDeModelo {
 	//Método para editar gasto
 	
 	//Método para borrar gasto
+	public void borrarGasto(int idGasto) {
+		RepositorioGastos.eliminarGasto(idGasto);
+	}
 	
 	//Método para crear nuevas categorias
 	public void addNuevaCategoria(String nombreCategoria) {

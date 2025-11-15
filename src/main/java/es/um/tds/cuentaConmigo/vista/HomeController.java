@@ -19,6 +19,7 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.util.StringConverter;
@@ -193,19 +194,14 @@ public class HomeController {
             grid.setAlignment(Pos.CENTER_LEFT);
             HBox.setMargin(grid, new Insets(0, 0, 0, 10));
 
-            // Columna 1 (fecha): 120px
-            ColumnConstraints col1 = new ColumnConstraints(120);
-
-            // Columna 2 (cantidad): 80px
-            ColumnConstraints col2 = new ColumnConstraints(60);
-
-            // Columna 3 (categoría): expansiva
+            // Columnas
+            ColumnConstraints col1 = new ColumnConstraints(120); // fecha
+            ColumnConstraints col2 = new ColumnConstraints(60);  // cantidad
             ColumnConstraints col3 = new ColumnConstraints();
-            col3.setHgrow(Priority.ALWAYS);
-
+            col3.setHgrow(Priority.ALWAYS); // categoría expansiva
             grid.getColumnConstraints().addAll(col1, col2, col3);
 
-            // --- Labels del gasto ---
+            // Labels
             Label fechaLabel = new Label(g.getFecha().toString());
             fechaLabel.setFont(Font.font(14));
             GridPane.setHgrow(fechaLabel, Priority.NEVER);
@@ -216,25 +212,48 @@ public class HomeController {
 
             Label categoriaLabel = new Label(g.getCategoria().getTipo());
             categoriaLabel.setFont(Font.font(14));
-            GridPane.setHgrow(categoriaLabel, Priority.ALWAYS); // se expande
+            GridPane.setHgrow(categoriaLabel, Priority.ALWAYS);
 
-            // Añadirlos al grid
             grid.add(fechaLabel, 0, 0);
             grid.add(cantidadLabel, 1, 0);
             grid.add(categoriaLabel, 2, 0);
 
-            // --- Botón editar ---
+            // --- Botones ---
             Button editarBtn = new Button("Editar");
             editarBtn.setFont(Font.font(14));
             editarBtn.getStyleClass().add("editBtn");
+            editarBtn.setMinWidth(Region.USE_PREF_SIZE);
 
-            // Añadir grid + botón a la fila
-            fila.getChildren().addAll(grid, editarBtn);
+            Button borrarBtn = new Button("Borrar");
+            borrarBtn.setFont(Font.font(14));
+            borrarBtn.getStyleClass().add("editBtn");
+            borrarBtn.setMinWidth(Region.USE_PREF_SIZE); 
+            
+            borrarBtn.setOnAction(e -> {
+                // Eliminar el gasto de la lista original
+                controlador.borrarGasto(g.getId());
+                gastosFiltrados.remove(g);
+                numResultados.setText(gastosFiltrados.size() + " resultados");
+                mostrarResultados(gastosFiltrados);
+            });
+
+            // --- HBox para botones ---
+            HBox botonesBox = new HBox(10);
+            botonesBox.getChildren().addAll(editarBtn, borrarBtn);
+            botonesBox.setAlignment(Pos.CENTER_LEFT);
+
+            // --- Ajuste de expansión ---
+            HBox.setHgrow(grid, Priority.ALWAYS);
+            HBox.setHgrow(botonesBox, Priority.NEVER);
+
+            // Añadir grid + botones a la fila
+            fila.getChildren().addAll(grid, botonesBox);
 
             // Insertar en el VBox principal
             VBoxResultados.getChildren().add(fila);
         }
     }
+
     
     @FXML
     private VBox VBoxCategorias;

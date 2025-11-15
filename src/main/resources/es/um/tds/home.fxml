@@ -343,7 +343,7 @@
                <Insets left="10.0" right="10.0" />
             </VBox.margin>
             <content>
-               <VBox fx:id="VBoxResultados" prefWidth="400.0" styleClass="resultadosPanel">
+               <VBox fx:id="VBoxResultados" prefWidth="500.0" styleClass="resultadosPanel">
                   <children>
                      <HBox alignment="CENTER_LEFT" spacing="60.0" styleClass="resultadoGasto">
                         <children>
