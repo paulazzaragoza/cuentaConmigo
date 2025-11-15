@@ -1,6 +1,9 @@
 package es.um.tds.cuentaConmigo.vista;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import es.um.tds.App;
 import java.util.LinkedList;
 import java.util.List;
@@ -18,6 +21,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import javafx.util.StringConverter;
 
 public class HomeController {
 
@@ -244,6 +248,29 @@ public class HomeController {
     @FXML
     private Label errorFiltrar;
     
+    @FXML
+    private DatePicker filtroFecha1;
+    
+    @FXML
+    private DatePicker filtroFecha2;
+    
+    public String estadoDatePicker(DatePicker dp) {
+        String texto = dp.getEditor().getText();
+        StringConverter<LocalDate> converter = dp.getConverter();
+
+        try {
+            LocalDate fecha = converter.fromString(texto);
+
+            if (fecha == null) return "vacio";
+            return "valido";
+
+        } catch (Exception e) {
+            return "invalido";
+        }
+    }
+
+
+    
     
     public void filtrarGastos() {
     	
@@ -252,6 +279,13 @@ public class HomeController {
     	List<String> listaCategorias = new LinkedList<>();
     	List<String> listaMeses = new LinkedList<>();
     	
+    	//comprobación de que las fechas son válidas en formato
+    	if(estadoDatePicker(filtroFecha1).equals("invalido") || estadoDatePicker(filtroFecha2).equals("invalido")){
+    		errorFiltrar.setText("El formato de las fechas es inválido");
+    		return;
+    	}
+    	
+    	//sacamos la lista de categorías
     	for (Node n : VBoxCategorias.getChildren()) {
     	    if (n instanceof CheckBox) {
     	        CheckBox cb = (CheckBox) n;
@@ -265,6 +299,8 @@ public class HomeController {
     	    }
     	}
     	
+    	
+    	//sacamos la lista de meses
     	for (Node n : VBoxMeses.getChildren()) {
     	    if (n instanceof CheckBox) {
     	        CheckBox cb = (CheckBox) n;
@@ -301,16 +337,49 @@ public class HomeController {
     	    }
     	}
     	
-    	if(listaMeses.isEmpty() && listaCategorias.isEmpty()) {
-    		errorFiltrar.setText("No hay ningún filtro aplicado");
+    	List<Gasto> gastosFiltrados = new LinkedList<>();
+    	
+    	
+    	if(listaMeses.isEmpty() && listaCategorias.isEmpty() 
+    	        && estadoDatePicker(filtroFecha1).equals("vacio") 
+    	        && estadoDatePicker(filtroFecha2).equals("vacio")) {
+
+    	    errorFiltrar.setText("No hay ningún filtro aplicado");
+    	    return;
+
+    	} else if(estadoDatePicker(filtroFecha1).equals("invalido") 
+    	        || estadoDatePicker(filtroFecha2).equals("invalido")) {
+
+    	    errorFiltrar.setText("El formato de las fechas es inválido");
+    	    return;
+
+    	} else if(filtroFecha1.getValue() == null && filtroFecha2.getValue() == null){
+
+    	    gastosFiltrados = controlador.filtrarGastos(listaCategorias, listaMeses);
+
+    	} else if((filtroFecha1.getValue() == null && filtroFecha2.getValue() != null) ||
+    	          (filtroFecha1.getValue() != null && filtroFecha2.getValue() == null)) {
+
+    	    errorFiltrar.setText("Debes rellenar ambas fechas para usar un intervalo");
+    	    return;
+
+    	} else if(filtroFecha1.getValue().isAfter(filtroFecha2.getValue())) {
+
+    	    errorFiltrar.setText("El orden de las fechas está mal");
+    	    return;
+
+    	} else if(!listaMeses.isEmpty()) {
+
+    	    errorFiltrar.setText("No se puede filtrar por meses e intervalos a la vez");
+    	    return;
+
     	} else {
-    		List<Gasto> gastosFiltrados = controlador.filtrarGastos(listaCategorias, listaMeses);
-    		if (gastosFiltrados.size() > 0) {
-    			mostrarResultados(gastosFiltrados);
-    		}
-    		//int tamano = gastosFiltrados.size();
-    		//System.out.println("Se ha obtenido la lista de tamaño " + tamano);
+
+    	    gastosFiltrados = controlador.filtrarGastosIntervalo(listaCategorias, 
+    	            filtroFecha1.getValue(), filtroFecha2.getValue());
     	}
+
+		mostrarResultados(gastosFiltrados);
     	
     }
     

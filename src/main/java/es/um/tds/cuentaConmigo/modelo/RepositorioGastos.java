@@ -1,5 +1,6 @@
 package es.um.tds.cuentaConmigo.modelo;
 
+import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -43,6 +44,19 @@ public class RepositorioGastos {
                 .filter(g -> meses.contains(g.getFecha().getMonth().toString()) && categorias.contains(g.getCategoria()))
                 .collect(Collectors.toList());
     }
+    
+    public static List<Gasto> filtrarGastosIntervaloCategorias(LocalDate fecha1, LocalDate fecha2, List<Categoria> categorias){
+    	return gastos.stream()
+    			.filter(g -> !g.getFecha().isBefore(fecha1) && !g.getFecha().isAfter(fecha2) && categorias.contains(g.getCategoria()))
+    			.collect(Collectors.toList());
+    }
+    
+    public static List<Gasto> filtrarGastosPorIntervalo(LocalDate fecha1, LocalDate fecha2){
+    	return gastos.stream()
+    			.filter(g -> !g.getFecha().isBefore(fecha1) && !g.getFecha().isAfter(fecha2))
+    			.collect(Collectors.toList());
+    }
+    
     
     
     

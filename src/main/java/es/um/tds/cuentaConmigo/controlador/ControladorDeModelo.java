@@ -1,6 +1,7 @@
 package es.um.tds.cuentaConmigo.controlador;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -58,6 +59,14 @@ public class ControladorDeModelo {
 		
 	}
 	
+	public List<Gasto> filtrarGastosIntervalo(List<String> listaCategorias, LocalDate fecha1, LocalDate fecha2){
+		if(listaCategorias.isEmpty()) {
+			return RepositorioGastos.filtrarGastosPorIntervalo(fecha1, fecha2);
+		} else {
+			List<Categoria> listaCat = listaCategorias.stream().map(nombre -> FactoriaCategorias.crearCategoria(nombre)).collect(Collectors.toList());
+			return RepositorioGastos.filtrarGastosIntervaloCategorias(fecha1, fecha2, listaCat);
+		}
+	}
 	//Definir un limite
 	public void addLimite(double cantidad, String tipo, String nombreCategoria) {
 		TipoLimite tipoLim;
